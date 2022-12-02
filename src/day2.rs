@@ -27,7 +27,7 @@ pub fn solve() {
     };
 
     let rounds: Vec<&str> = contents.split("\n").collect();
-    for round in rounds {
+    for round in rounds.clone() {
         let r: Vec<&str> = round.split(" ").collect();
         let op = r[0].trim();
         let my = r[1].trim();
@@ -57,4 +57,37 @@ pub fn solve() {
     }
 
     println!("{}", my_score);
+
+    let mut new_score = 0u32;
+
+     for round in rounds {
+        let r: Vec<&str> = round.split(" ").collect();
+        let op = r[0].trim();
+        let my = r[1].trim();
+
+        match op {
+            "A" => match my {
+                "X" => new_score += scores.scissors + scores.lost,
+                "Y" => new_score += scores.rock + scores.draw,
+                "Z" => new_score += scores.paper + scores.won,
+                _ => panic!("nani?")
+            },
+            "B" => match my {
+                "X" => new_score += scores.rock + scores.lost,
+                "Y" => new_score += scores.paper + scores.draw,
+                "Z" => new_score += scores.scissors + scores.won,
+                _ => panic!("nani?")
+            },
+            "C" => match my {
+                "X" => new_score += scores.paper + scores.lost,
+                "Y" => new_score += scores.scissors + scores.draw,
+                "Z" => new_score += scores.rock + scores.won,
+                _ => panic!("nani?")
+            },
+
+            _ => panic!("nani?"),
+        }
+    }
+
+    println!("{}", new_score);
 }
