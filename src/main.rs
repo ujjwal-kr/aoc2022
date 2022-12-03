@@ -1,9 +1,12 @@
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     println!("DAY 1: ");
     day1::solve();
     println!("DAY 2:");
     day2::solve(); 
+    println!("DAY 3: ");
+    day3::solve();    
 }
