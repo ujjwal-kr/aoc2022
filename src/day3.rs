@@ -56,9 +56,7 @@ pub fn solve() {
                 }
             }
         }
-
-
-        println!("{:?}", commons);
+        
         let mut f: char = 'a';
 
         for i in p3.chars() {
